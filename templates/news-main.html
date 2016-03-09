@@ -1,0 +1,17 @@
+<ion-view mz-screen view-title="{{ title | translate }}">
+    <ion-content>
+    	<div class="row" ng-repeat="row in sections | limitTo: 10"
+    		 ng-if="(row[0].thread.main_image && row[0].title) || (row[1].thread.main_image && row[1].title)">
+    		<div class="col news" ng-repeat="news in row " ng-click="goTo(news)"
+    			 ng-class="{'separation' : row[0].thread.main_image && row[0].title && row[1].thread.main_image && row[1].title }"
+    			 ng-if="news.thread.main_image && news.title">
+    			<img ng-src="{{news.thread.main_image}}" 
+    			 ng-class="{'more-height' : !(row[0].thread.main_image && row[0].title) || !(row[1].thread.main_image && row[1].title) }"
+    			 class="full-image">
+    			<h5>{{'latest' | translate}}</h5>
+    			<h4 class="truncate">{{news.title}}</h4>
+    			<p class="truncate">{{news.text}}</p>
+    		</div>
+    	</div>
+    </ion-content>
+</ion-view>
